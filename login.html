@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RunMate - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #231515;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* Header Styles */
+        header {
+            background: linear-gradient(90deg, #4CAF50, #3b8d40);
+            color: white;
+            padding: 5px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+            padding: 7px 8px;
+            border-radius: 1px;
+        }
+        header nav a:hover {
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        /* Login Form Styles */
+        .login-form {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #3b8d40;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            background: #231515;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background: #382323;
+        }
+        .error-message {
+            color: #ff6b6b;
+            margin-top: 10px;
+            display: none;
+        }
+        .success-message {
+            color: #51cf66;
+            margin-top: 10px;
+            display: none;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .register-link p {
+            margin: 0;
+            font-size: 16px;
+        }
+        .register-link a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-header h2 {
+            margin-bottom: 10px;
+        }
+        .form-header p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>RunMate</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="registration.html">Register</a>
+                <a href="prizes.html">Prizes</a>
+                <a href="activities.html">Activities</a>
+                <a href="events.html">Events</a>
+                <a href="goodies.html">Goodies</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="login-form">
+            <div class="form-header">
+                <h2>Welcome Back!</h2>
+                <p>Sign in to continue to RunMate</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="submit-btn">Sign In</button>
+                <p class="error-message" id="errorMessage"></p>
+                <p class="success-message" id="successMessage"></p>
+            </form>
+            <div class="register-link">
+                <p>New to RunMate? <a href="registration.html">Create an account</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCmvAr_Sfno1AKhNhtwyznntDAsLbIem-s",
+            authDomain: "runmate-c3634.firebaseapp.com",
+            projectId: "runmate-c3634",
+            storageBucket: "runmate-c3634.firebasestorage.app",
+            messagingSenderId: "200889826430",
+            appId: "1:200889826430:web:8ab7e5d5aa88e1e7bbac2f",
+            measurementId: "G-BWNH3EGSSX"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Login form handling
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            try {
+                // Sign in user with email and password
+                await signInWithEmailAndPassword(auth, email, password);
+
+                // Show success message
+                errorMessage.style.display = 'none';
+                successMessage.style.display = 'block';
+                successMessage.textContent = 'Login successful! Redirecting to home page...';
+
+                // Redirect to home page after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+
+            } catch (error) {
+                // Show error message
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = error.message;
+            }
+        });
+    </script>
+</body>
+</html> 

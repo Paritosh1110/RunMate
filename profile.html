@@ -1,0 +1,271 @@
+<!-- <?php
+// Sample code to connect to the database and fetch athlete data
+$server = "localhost";
+$username = "root";
+$password = "";
+$database = "login"; // Adjust as per your database name
+
+$con = mysqli_connect($server, $username, $password, $database);
+
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Fetch athlete data
+$sql = "SELECT * FROM user WHERE id = 1"; // Adjust to fetch the specific athlete's profile based on an ID or other identifier
+$result = mysqli_query($con, $sql);
+$athlete = mysqli_fetch_assoc($result);
+mysqli_close($con);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Profile - RunMate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #231515;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        header {
+            background: linear-gradient(90deg, #4CAF50, #3b8d40);
+            color: white;
+            padding: 5px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+            padding: 7px 8px;
+            border-radius: 1px;
+        }
+        header nav a:hover {
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        .profile-card {
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .profile-card h2 {
+            margin-top: 0;
+        }
+        .profile-card p {
+            margin: 5px 0;
+        }
+        footer {
+            background-color: #2e1818;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            font-size: 12px;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>RunMate Profile</h1>
+        <nav>
+            <a href="reg2.html">Dashboard</a>
+            <a href="registration.html">Logout</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <div class="profile-card">
+        <h2>Athlete Profile</h2>
+        <p><strong>Name:</strong> balu <?php echo $athlete['name']; ?></p>
+        <p><strong>Age:</strong> 22 <?php echo $athlete['age']; ?></p>
+        <p><strong>Email:</strong> balu22@xyz <?php echo $athlete['email']; ?></p>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 RunMate. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html> -->
+
+
+<?php
+// Sample code to connect to the database and fetch athlete data
+$server = "localhost";
+$username = "root";
+$password = "";
+$database = "login"; // Adjust as per your database name
+
+$con = mysqli_connect($server, $username, $password, $database);
+
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Fetch athlete data
+$sql = "SELECT * FROM user WHERE id = 1"; // Adjust to fetch the specific athlete's profile based on an ID or other identifier
+$result = mysqli_query($con, $sql);
+$athlete = mysqli_fetch_assoc($result);
+mysqli_close($con);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Profile - RunMate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #231515;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        header {
+            background: linear-gradient(90deg, #4CAF50, #3b8d40);
+            color: white;
+            padding: 5px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+            padding: 7px 8px;
+            border-radius: 1px;
+        }
+        header nav a:hover {
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        .profile-card {
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .profile-card img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+        }
+        .profile-card h2 {
+            margin-top: 0;
+        }
+        .profile-card p {
+            margin: 5px 0;
+        }
+        footer {
+            background-color: #2e1818;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            font-size: 12px;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>RunMate Profile</h1>
+        <nav>
+            <a href="reg2.html">Dashboard</a>
+            <a href="registration.html">Logout</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <div class="profile-card">
+        <img src="https://img.redbull.com/images/c_crop,x_0,y_0,h_1013,w_1800/c_fill,w_750,h_450/q_auto,f_auto/redbullcom/2023/11/20/maquvp6gyuke79lkswey/mutaz-barshim-profile" alt="Profile Picture">
+        <div>
+            <h2>Athlete Profile</h2>
+            <p><strong>Name:</strong> Balu <?php echo $athlete['name']; ?></p>
+            <p><strong>Age:</strong> 22 <?php echo $athlete['age']; ?></p>
+            <p><strong>Email:</strong> balu22@gmail.com <?php echo $athlete['email']; ?></p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 RunMate. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
